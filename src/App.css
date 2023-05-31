@@ -1,0 +1,274 @@
+/* App.css */
+*{
+  padding: 0;
+  margin: 0;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #FAF8f5;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+  max-height: 75%;
+}
+
+.chat-messages::-webkit-scrollbar {
+  height: 10px;
+  width: 8px;
+  
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.chat-message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+
+  
+  /* margin-right: 5px; */
+}
+
+.chat-message.left {
+  flex-direction: row;
+}
+
+.chat-message.right {
+  flex-direction: row-reverse;
+
+  
+}
+.chat-message.left .message-content{
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.chat-message.right .message-content{
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  background-color: #367ac3;
+  color: #f2f2f2;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  
+}
+.chat-message.right .message-content span {
+  font-size: 12px;
+  color: #eeeded;
+}
+
+.chat-message img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.chat-message .message-content {
+  background-color: #ffffff;
+  padding: 10px;
+
+  /* border-radius: 10px; */
+}
+
+.chat-message .message-content p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.chat-message .message-content span {
+  font-size: 12px;
+  color: #888888;
+}
+.chat-input-container {
+  /* padding-bottom: calc(10px + env(safe-area-inset-bottom)); */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0; 
+  z-index: 1000;
+  background-color: #FAF8F5;
+}
+.chat-input {
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.chat-input input[type="text"] {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.icon-container {
+  display: flex;
+  gap: 25px;
+}
+
+.icon-container box-icon {
+  cursor: pointer;
+  font-size: 20px;
+  color: #888;
+}
+
+.icon-container box-icon:hover {
+  color: #555;
+}
+
+.header{
+  padding:5px 20px;
+  border-bottom: 1px solid #c6c6c6;
+}
+.top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+
+}
+.top box-icon{
+  height: 2rem;
+  width: 2rem;
+}
+.top-left{
+  display: flex;
+  align-items: center;
+}
+.top-right{
+  display: flex;
+  align-items: center;
+}
+
+
+.grp-img {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.grp-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hr{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+.hr hr{
+  width: 100%;
+  background-color: #a1a1a1;
+}
+.hr span{
+  text-align: center;
+  width: 250px;
+  margin: 0 20px;
+  color: #777777;
+}
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btm-left{
+  display: flex;
+  align-items:center;
+  gap: 12px;
+}
+.from-to{
+  line-height: 20px;
+  font-weight: 600;
+}
+.from-to span{
+  color: #666666;
+  font-weight: 400;
+}
+
+.members,.num,.report{
+  display:flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+}
+.btm-right {
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  background-color: #ffffff;
+  bottom: -150px;
+  left: -130px;
+  width: 156px;
+  height: 144px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.modal.show {
+  display: flex;
+}
+.attach{
+  position: relative;
+}
+.att-modal{
+  position: absolute;
+  
+  top: -70px;
+  left: -65px;
+  display: flex;
+  align-items: center;
+  background-color: #008000;
+  padding: 5px 10px;
+  border-radius: 30px;
+  height: 44px;
+  width: 124px;
+  justify-content: center;
+  gap: 14px;
+  color: #fff;
+  font-size: 25px;
+  border:none;
+  display: none;
+
+}
+.att-modal::before {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #008000;
+}
+
+.att-modal.show{
+  display: flex;
+}
