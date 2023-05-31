@@ -24,7 +24,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://3.111.128.67/assignment/chat?page=${pageNumber}`
+          `https://3.111.128.67/assignment/chat?page=${pageNumber}`
         );
         if (!response.ok) {
           throw new Error('Failed to fetch chat data');
