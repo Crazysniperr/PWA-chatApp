@@ -15,6 +15,7 @@ function App() {
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
+
   const handleAttachToggle = () => {
     setIsAttachOpen(!isAttachOpen);
   };
@@ -26,21 +27,28 @@ function App() {
           `http://3.111.128.67/assignment/chat?page=${pageNumber}`
         );
         if (!response.ok) {
-          throw new Error("Failed to fetch chat data");
+          throw new Error('Failed to fetch chat data');
         }
-        const data = await response.json();
-        if (pageNumber === 0) {
-          setChats(data.chats);
-          setName(data.name);
-          setFrom(data.from);
-          setTo(data.to);
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const data = await response.json();
+          if (pageNumber === 0) {
+            setChats(data.chats);
+            setName(data.name);
+            setFrom(data.from);
+            setTo(data.to);
+          } else {
+            setChats((prevChats) => [...prevChats, ...data.chats]);
+          }
         } else {
-          setChats((prevChats) => [...prevChats, ...data.chats]);
+          throw new Error('Invalid content type: ' + contentType);
         }
       } catch (error) {
         setError(error.message);
       }
     };
+    
+    
 
     fetchData();
   }, [pageNumber]);
@@ -62,10 +70,6 @@ function App() {
     }
   };
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   useEffect(() => {
     const handleScroll = () => {
       const threshold = 100; // Adjust this threshold value as needed
@@ -84,6 +88,10 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <>
